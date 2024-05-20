@@ -1,5 +1,6 @@
 # AI-ML 
 <br>
+***Notes, URL, Summary***
 Repo for Artificial Intelligence and Machine Learning projects and information for research and academic purposes. <br>
 <br>
 
@@ -11,10 +12,10 @@ Artificial intelligence (AI) refers to the use of technology to build computers 
 <br>
 A good place to start is the Artificial Intelligence: A Modern Approach by Russell and Norvig book https://aima.cs.berkeley.edu/  <br>
 <br>
-There are many good books and resources, among them: <br>
+There are many good books and resources available including: <br>
 Artificial intelligence fundamentals: https://www.ibm.com/design/ai/fundamentals  <br>
-Artificial intelligence (AI) vs. machine learning (ML): https://cloud.google.com/learn/artificial-intelligence-vs-machine-learning
-Essential Math for Data Science: https://www.oreilly.com/library/view/essential-math-for/9781098102920/
+Artificial intelligence (AI) vs. machine learning (ML): https://cloud.google.com/learn/artificial-intelligence-vs-machine-learning<br>
+Essential Math for Data Science: https://www.oreilly.com/library/view/essential-math-for/9781098102920/<br>
 Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow:  https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/  <br>
 Inside Deep Learning: https://www.manning.com/books/inside-deep-learning <br>
 Introduction to Generative AI: introductory level microlearning course https://www.cloudskillsboost.google/course_templates/536 <br>
@@ -90,40 +91,110 @@ Machine Learning with Python: https://developer.ibm.com/languages/python/courses
 ### Libraries
  <br>
 pandas: https://pandas.pydata.org/  <br>
-seaborn: statistical data visualization  https://seaborn.pydata.org/  <br>
-numpy: fundamental package for scientific computing with Python https://numpy.org/  <br>
-sklearn: Machine Learning in Python https://scikit-learn.org/stable/
+<br>
+collections: implements specialized container datatypes   https://docs.python.org/3/library/collections.html <br>
+fuzzywuzzy: fuzzy string matching https://pypi.org/project/fuzzywuzzy/ <br>
+IPython: provides a rich toolkit for an interactive Python shell https://pypi.org/project/ipython/ <br>
 Matplotlib: Visualization with Python https://matplotlib.org/  <br>
+numpy: fundamental package for scientific computing with Python https://numpy.org/  <br>
 re: Regular expression operations https://docs.python.org/3/library/re.html  <br>
 scikit-learn: https://scikit-learn.org/stable/modules/classes.html#module-sklearn.ensemble <br>
+scipy: provides algorithms for optimization, integration, interpolation, statistics etc  https://scipy.org/ <br>
+seaborn: statistical data visualization  https://seaborn.pydata.org/  <br>
+sklearn: Machine Learning in Python https://scikit-learn.org/stable/
 <br>
  
 # ML
 <br>
 
 **Steps** <br>
- 1 Data
- - Acquire data
- - Exploratory Data Analysis (EDA) and Visualization <br>
+1. Business understanding <br>
+1.1. Outcomes and Predictions <br>
+2. Data understanding <br>
+2.1. Data Acquisition <br>
+2.2. Exploratory Data Analysis  (EDA) <br>
+ - and Visualization <br>
     a good libray to start with is: https://docs.profiling.ydata.ai/latest/ <br>
     here is how I used it in a project, check it out at: https://github.com/johennie/tropical_cyclone_tracks/blob/main/notebooks/tropical_storm.ipynb <br>
- - Data preparation <br>
+3. Data preparation <br>
+   - drop unnecessary columns <br>
+   - check for duplicates <br>
    - check and address Nan, nulls, inaccurate data <br>
    - check and address outliers <br>
    - examine correlations <br>
    - scale and normalize data for investigation <br>
    here is how I used it in a project, check it out at: https://github.com/johennie/what_drives_a_car_price/blob/main/notebooks/prompt_II.ipynb <br>
    - <br>
- 2 Split data into train test split <br>
- 3 Define and select the model(s) <br>
- 4 Fit, predict, and collect metrics to evaluate the model(s) <br>
+4. Modeling <br>
+4.1. Split data into train test split <br>
+4.2. Define and select the model(s) <br>
+4.3. Fit, predict, and collect metrics to evaluate the model(s) <br>
 <br>
 
 ## Visualization
+Data Visualization Techniques <br>
+•	Histograms: For understanding the distribution of numerical features. <br>
+•	Box Plots: For detecting outliers and understanding the spread of numerical features. <br>
+•	Bar Plots: For visualizing the distribution of categorical features. <br>
+•	Count Plots: For showing the frequency of categories in categorical features. <br>
+•	Scatter Plots: For visualizing relationships between numerical features. <br>
+•	Pair Plots: For visualizing pairwise relationships in the dataset. <br>
+•	Heatmap: For visualizing correlations between features. <br>
+•	Pivot Tables: For summarizing data and exploring relationships between different categorical features.<br>
 <br>
 Types of Data Plots and How to Create Them in Python: https://www.datacamp.com/tutorial/types-of-data-plots-and-how-to-create-them-in-python <br>
 Top 50 matplotlib Visualizations: https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/ <br>
 <br>
+
+
+## Cluster analysis and Principal Component Analysis (PCA)
+<br>![clustering.png](images%2Fclustering.png) <br>
+<br>
+Assigns related data into clusters / groups for processing used used for generalization, data compression, and privacy.
+<br>
+10 Clustering Algorithms With Python: https://machinelearningmastery.com/clustering-algorithms-with-python/
+<br> 
+Statistical technique to reduce data features to those essential while maintining the variance and properties of the original data. <br>
+<br> 
+NOTE: to get an object w the columns that make up each PC : pca_loadings_analysis.apply(lambda s: s.nlargest(5).index.tolist(), axis=1)
+<br>
+
+## Classification
+ <br>
+Classification in Machine Learning: An Introduction
+ https://www.datacamp.com/blog/classification-machine-learning
+<br>
+Classification: ROC Curve and AUC https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc  <br>
+ <br>
+ 
+
+## Hierarchical Clustering
+ <br>
+Hierarchical Clustering in Machine Learning 
+ https://www.geeksforgeeks.org/hierarchical-clustering/
+<br>
+Machine Learning - Hierarchical Clustering https://www.w3schools.com/python/python_ml_hierarchial_clustering.asp  <br>
+ <br>
+
+## Cross Validation CV
+<br>What is Cross Validation?
+https://docs.aws.amazon.com/machine-learning/latest/dg/cross-validation.html <br>
+<br>
+cross-validation is used to evaluate an estimator (model) performance and
+sklearn.model_selection.cross_val_score can be used to evaluate cross-validation scores
+some info: https://scikit-learn.org/stable/modules/cross_validation.html
+Machine Learning - Cross Validation https://www.w3schools.com/python/python_ml_cross_validation.asp  <br>
+ <br>
+
+## Regression and Multiple Regression
+Regression is used to predict continuous values and in multiple regression multiple independent variables are used to predict the dependent prediction y.
+<br>
+What is regression? https://www.seldon.io/machine-learning-regression-explained <br>
+<br>
+What is Multiple Regression?
+https://www.sciencedirect.com/topics/psychology/multiple-regression <br>
+Machine Learning - Multiple Regression https://www.w3schools.com/python/python_ml_multiple_regression.asp  <br>
+ <br>
 
 ## Linear Regression
 <br>Algorithm that defines a linear relationship between the features X (independent variables) and the prediction y (dependent variable)
@@ -160,18 +231,6 @@ A technique to try different values to select the best score.
 Grid Search in Python from scratch— Hyperparameter tuning: https://towardsdatascience.com/grid-search-in-python-from-scratch-hyperparameter-tuning-3cca8443727b <br>
 Machine Learning - Grid Search: https://www.w3schools.com/python/python_ml_grid_search.asp  <br>
 Statistical comparison of models using grid search: https://scikit-learn.org/stable/auto_examples/model_selection/plot_grid_search_stats.html  <br>
-<br>
-
-## Cluster analysis and Principal Component Analysis (PCA)
-<br>![clustering.png](images%2Fclustering.png) <br>
-<br>
-Assigns related data into clusters / groups for processing used used for generalization, data compression, and privacy.
-<br>
-10 Clustering Algorithms With Python: https://machinelearningmastery.com/clustering-algorithms-with-python/
-<br> 
-Statistical technique to reduce data features to those essential while maintining the variance and properties of the original data. <br>
-<br> 
-NOTE: to get an object w the columns that make up each PC : pca_loadings_analysis.apply(lambda s: s.nlargest(5).index.tolist(), axis=1)
 <br>
 
  ## Ridge Regression / L2 regularization
@@ -235,28 +294,18 @@ What is Polynomial Regression?
 Machine Learning - Polynomial Regression https://www.w3schools.com/python/python_ml_polynomial_regression.asp  <br>
  <br>
  
-
-## Multiple Regression
-<br>
-Multiple independent variables are used to predict the dependent prediction y. 
-<br>
-What is Multiple Regression?
-https://www.sciencedirect.com/topics/psychology/multiple-regression <br>
-Machine Learning - Multiple Regression https://www.w3schools.com/python/python_ml_multiple_regression.asp  <br>
- <br>
- 
 ## Decision Tree
+ued for classification and regression, the goal of the model is to predict the value of the dependent variable y.<br>
  <br>
 What is a Decision Tree?
  https://www.ibm.com/topics/decision-trees <br>
 Machine Learning - Decision Tree https://www.w3schools.com/python/python_ml_decision_tree.asp  <br>
  <br>
-
-## RidgeCV and Cross Validation 
-<br><br>![grid_search_ridge.png](images%2Fgrid_search_ridge.png)
-<br>What is Cross Validation?
-https://docs.aws.amazon.com/machine-learning/latest/dg/cross-validation.html <br>
+https://scikit-learn.org/stable/modules/tree.html <br>
 <br>
+
+## RidgeCV 
+<br><br>![grid_search_ridge.png](images%2Fgrid_search_ridge.png)
 What is Ridge Regression?
 https://www.publichealth.columbia.edu/research/population-health-methods/ridge-regression <br>
 RidgeCV python code example:<br>
@@ -287,17 +336,7 @@ mae = mean_absolute_error(y_train, y_pred) <br>
 <br>
 here is how I used it in a project, check it out at: https://github.com/johennie/what_drives_a_car_price/blob/main/notebooks/prompt_II.ipynb <br>
  <br>
-Machine Learning - Cross Validation https://www.w3schools.com/python/python_ml_cross_validation.asp  <br>
- <br>
- 
-## Classification
- <br>
-Classification in Machine Learning: An Introduction
- https://www.datacamp.com/blog/classification-machine-learning
-<br>
-Classification: ROC Curve and AUC https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc  <br>
- <br>
- 
+
 ## K-nearest Neighbors
  <br>
 What is the k-nearest neighbors (KNN) algorithm?
@@ -340,13 +379,8 @@ report = classification_report(y_test, y_pred) <br>
 Machine Learning - Logistic Regression https://www.w3schools.com/python/python_ml_logistic_regression.asp  <br>
  <br>
  
-## Hierarchical Clustering
- <br>
-Hierarchical Clustering in Machine Learning 
- https://www.geeksforgeeks.org/hierarchical-clustering/
-<br>
-Machine Learning - Hierarchical Clustering https://www.w3schools.com/python/python_ml_hierarchial_clustering.asp  <br>
- <br>
+## DecisionTreeClassifier
+https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html <br>
 
 ## Random Forest Classifier
 <br>
@@ -372,3 +406,15 @@ y_proba_rf = rf_model.predict_proba(X_test)[:, 1] <br>
  <br>
 
 scikit-learn random forest classifier: https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html
+
+
+## RandomForestClassifier
+is a set of decision trees from random selected subset of the training data and uses averaging to improve the predictive accuracy and control over-fitting. 
+<br>
+https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html <br>
+
+
+## C-Support Vector Classification
+it can determine the penalty for misclassified data points during the training process. <br>
+https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html
+<br>
