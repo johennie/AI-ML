@@ -196,6 +196,34 @@ https://www.sciencedirect.com/topics/psychology/multiple-regression <br>
 Machine Learning - Multiple Regression https://www.w3schools.com/python/python_ml_multiple_regression.asp  <br>
  <br>
 
+## Grid Search and Hyperparameters
+A technique to try different values to select the best score.
+<br>
+Grid Search in Python from scratch— Hyperparameter tuning: https://towardsdatascience.com/grid-search-in-python-from-scratch-hyperparameter-tuning-3cca8443727b <br>
+Machine Learning - Grid Search: https://www.w3schools.com/python/python_ml_grid_search.asp  <br>
+Statistical comparison of models using grid search: https://scikit-learn.org/stable/auto_examples/model_selection/plot_grid_search_stats.html  <br>
+<br>
+example: <br>
+1. define pipeline<br>
+pipeline = Pipeline(steps=[...])<br>
+preprocessor = ColumnTransformer(transformers=[...])<br>
+2. split the data<br>
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)<br>
+3. fit and predict<br>
+grid_search = GridSearchCV(pipeline, params, scoring='accuracy', cv=5, verbose=1, n_jobs=-1)<br>
+start = time()<br>
+grid_search.fit(X_train, y_train)<br>
+stop = time() <br>
+4. calculate metrics<br>
+...<br>
+
+![gridsearch_metrics.png](images%2Fgridsearch_metrics.png)
+
+<br>
+here is how I used it in a project, check it out at: https://github.com/johennie/bank_marketing/blob/main/notebooks/jh_prompt_III.ipynb
+
+<br>
+
 ## Linear Regression
 <br>Algorithm that defines a linear relationship between the features X (independent variables) and the prediction y (dependent variable)
 <br>
@@ -225,15 +253,7 @@ Machine Learning - Linear Regression https://www.w3schools.com/python/python_ml_
 <br>
 
 
-## Grid Search and Hyperparameters
-A technique to try different values to select the best score.
-<br>
-Grid Search in Python from scratch— Hyperparameter tuning: https://towardsdatascience.com/grid-search-in-python-from-scratch-hyperparameter-tuning-3cca8443727b <br>
-Machine Learning - Grid Search: https://www.w3schools.com/python/python_ml_grid_search.asp  <br>
-Statistical comparison of models using grid search: https://scikit-learn.org/stable/auto_examples/model_selection/plot_grid_search_stats.html  <br>
-<br>
-
- ## Ridge Regression / L2 regularization
+## Ridge Regression / L2 regularization
 <br>Used for the analysis of multicollinearity in multiple regression data. Useful when multicollinearity is present in a dataset.
 <br>![ridge_regression_example.png](images%2Fridge_regression_example.png)
 <br>
@@ -293,16 +313,6 @@ What is Polynomial Regression?
  https://www.geeksforgeeks.org/python-implementation-of-polynomial-regression/ <br>
 Machine Learning - Polynomial Regression https://www.w3schools.com/python/python_ml_polynomial_regression.asp  <br>
  <br>
- 
-## Decision Tree
-ued for classification and regression, the goal of the model is to predict the value of the dependent variable y.<br>
- <br>
-What is a Decision Tree?
- https://www.ibm.com/topics/decision-trees <br>
-Machine Learning - Decision Tree https://www.w3schools.com/python/python_ml_decision_tree.asp  <br>
- <br>
-https://scikit-learn.org/stable/modules/tree.html <br>
-<br>
 
 ## RidgeCV 
 <br><br>![grid_search_ridge.png](images%2Fgrid_search_ridge.png)
@@ -344,7 +354,27 @@ https://www.ibm.com/topics/knn
 <br>
 sklearn.neighbors.KNeighborsClassifier https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html  <br>
  <br>
- 
+KNN python code example:<br>
+from sklearn.datasets import make_classification <br>
+from sklearn.model_selection import train_test_split <br>
+from sklearn.neighbors import KNeighborsClassifier <br>
+from sklearn.model_selection import train_test_split <br>
+from sklearn.preprocessing import OneHotEncoder <br>
+from sklearn.pipeline import make_pipeline <br>
+from sklearn.compose import ColumnTransformer <br>
+from sklearn.metrics import accuracy_score, classification_report <br>
+... <br>
+#Split the data <br>
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42) <br>
+#Define the model and pipeline <br>
+knn_pipeline = Pipeline(steps=[('preprocessor', preprocessor),('model', KNeighborsClassifier())]<br>
+start = time()<br>
+knn_pipeline.fit(X_train, y_train)<br>
+stop = time()<br>
+y_pred = knn_pipeline.predict(X_test)<br>
+...<br>
+<br>
+
 ## Logistic Regression
 <br>
 What is Logistic Regression?
@@ -378,9 +408,69 @@ report = classification_report(y_test, y_pred) <br>
  <br>
 Machine Learning - Logistic Regression https://www.w3schools.com/python/python_ml_logistic_regression.asp  <br>
  <br>
- 
+
+## Coefficients
+Models with Coefficients (coef_ attribute):
+<br>LogisticRegression
+<br>SVM (Support Vector Machine)
+<br>GridSearch with LogisticRegression
+<br>GridSearch with SVM
+<br>Models without Coefficients (coef_ attribute):
+<br>RandomForestClassifier
+<br>KNN (K-Nearest Neighbors)
+<br>DecisionTreeClassifier
+<br>GridSearch with RandomForestClassifier
+<br>GridSearch with KNN
+<br>GridSearch with DecisionTree
+<br>feature_names = logreg_pipeline.named_steps['preprocessor'].get_feature_names_out()
+<br>coefs = pd.DataFrame(
+<br>    logreg_pipeline.named_steps['model'].coef_.flatten(), 
+<br>    columns=["Coefficient values"], 
+<br>    index=feature_names
+<br>)
+<br>
+<br>coefs.plot.barh(figsize=(9, 12))
+<br>titlestr = "Logistic Regression Coefficients \n age seems to have a small impact here \n while the target is impacted significantly by the month and duration"
+<br>plt.title(titlestr)
+<br>plt.xlabel("Coefficient values")
+<br>
+<br>plt.axvline(x=0, color=".5")
+<br>plt.tight_layout()
+<br>plt.subplots_adjust(left=0.3)
+<br>plt.show()
+<br>
+![features_2.png](images%2Ffeatures_2.png)
+<br>
+## Decision Tree
+used for classification and regression, the goal of the model is to predict the value of the dependent variable y.<br>
+ <br>
+What is a Decision Tree?
+ https://www.ibm.com/topics/decision-trees <br>
+Machine Learning - Decision Tree https://www.w3schools.com/python/python_ml_decision_tree.asp  <br>
+ <br>
+https://scikit-learn.org/stable/modules/tree.html <br>
+<br>
 ## DecisionTreeClassifier
+<br>
+What is decision tree?
 https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html <br>
+<br>
+Decision Tree python code example:<br>
+<br>
+from sklearn.datasets import make_classification <br>
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split<br>
+...<br>
+#Split the data <br>
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42) <br>
+#Define the model <br>
+dtc_model = DecisionTreeClassifier() <br>
+#Fit, predict, and collect metrics to evaluate the model <br>
+dtc_model.fit(X_train, y_train) <br>
+y_pred = dtc_model.predict(X_test) <br>
+<br>
+here is how I used it in a project, check it out at: https://github.com/johennie/bank_marketing/blob/main/notebooks/jh_prompt_III.ipynb
+ <br>
 
 ## Random Forest Classifier
 <br>
@@ -390,7 +480,6 @@ https://www.ibm.com/topics/random-forest
 Reandom forest python code example:<br>
 <br>
 from sklearn.datasets import make_classification <br>
-from sklearn.model_selection import train_test_split <br>
 from sklearn.ensemble import RandomForestClassifier <br>
 from sklearn.model_selection import train_test_split<br>
 ...<br>
@@ -404,15 +493,13 @@ rf_model.fit(X_train, y_train) <br>
 y_pred_rf = rf_model.predict(X_test) <br>
 y_proba_rf = rf_model.predict_proba(X_test)[:, 1] <br>
  <br>
-
 scikit-learn random forest classifier: https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html
-
-
-## RandomForestClassifier
+ <br>
+RandomForestClassifier 
 is a set of decision trees from random selected subset of the training data and uses averaging to improve the predictive accuracy and control over-fitting. 
 <br>
 https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html <br>
-
+ <br>
 
 ## C-Support Vector Classification
 it can determine the penalty for misclassified data points during the training process. <br>
